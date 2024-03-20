@@ -1,5 +1,5 @@
 import React from 'react'
-import Toggle from './toggle';
+import Toggle from './Toggle';
 
 function Header() {
   return (

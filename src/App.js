@@ -1,8 +1,8 @@
 import './App.css';
-import Countries from './countries';
-import Header from './header';
-import SearchBar from './searchbar';
-import Filter from './filter';
+import Countries from './components/Countries';
+import Header from './components/Header';
+import SearchBar from './components/SearchBar';
+import Filter from './components/Filter';
 import React, { useState} from 'react';
 
  function App() {
