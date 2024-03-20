@@ -92,6 +92,10 @@ header {
 .icon {
   margin-right: 10px; 
 }
+.filter{
+  display: flex;
+ justify-content: space-between;
+}
 .filter select {
   border: none; 
   background-color: transparent;

@@ -49,14 +49,14 @@ function Filter({ handleFilterChange, handleSortChange }) {
 
   return (
     <div className="filter">
-      <select id="continent-filter" onChange={handleChange} value={selectedRegion}>
+      <select id="continent-filter" onChange={handleChange} value={selectedRegion} style={{marginRight: '25px'}}>
         <option value="">Filter by Region</option>
         {continents.map((continent, index) => (
           <option key={index} value={continent}>{continent}</option>
         ))}
       </select>
       {subregions.length > 0 && (
-        <select id="subregion-filter" onChange={handleSubregionChange} value={selectedSubregion}>
+        <select id="subregion-filter" onChange={handleSubregionChange} value={selectedSubregion}style={{marginRight: '25px'}}>
           <option value="">Filter by Subregion</option>
           {subregions.map((subregion, index) => (
             <option key={index} value={subregion}>{subregion}</option>
