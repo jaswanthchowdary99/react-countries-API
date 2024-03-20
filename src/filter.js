@@ -34,13 +34,13 @@ function Filter({ handleFilterChange, handleSortChange }) {
   const handleChange = (e) => {
     setSelectedRegion(e.target.value);
     setSelectedSubregion('');
-    handleFilterChange(e.target.value, ''); // Modified to clear subregion selection
+    handleFilterChange(e.target.value, ''); 
   };
 
   const handleSubregionChange = (e) => {
     const selectedSubregionValue = e.target.value;
     setSelectedSubregion(selectedSubregionValue);
-    handleFilterChange(selectedRegion, selectedSubregionValue); // Pass both selectedRegion and selectedSubregion
+    handleFilterChange(selectedRegion, selectedSubregionValue); 
   };
 
   const handleSort = (e) => {

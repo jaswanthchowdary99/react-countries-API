@@ -5,7 +5,7 @@ import SearchBar from './searchbar';
 import Filter from './filter';
 import React, { useState} from 'react';
 
-function App() {
+ function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('All'); 
   const [selectedSubregion, setSelectedSubregion] = useState('');
