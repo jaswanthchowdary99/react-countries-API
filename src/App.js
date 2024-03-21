@@ -4,6 +4,8 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import Filter from './components/Filter';
 import React, { useState} from 'react';
+import { BrowserRouter,Routes,Route} from 'react-router-dom';
+import CountryInfo from './components/CountryDetails';
 
  function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -29,24 +31,34 @@ import React, { useState} from 'react';
   };
 
   return (
-    <div className="App">
-      <Header />
-      <div className="App-header">
-        <div className="info">
-          <SearchBar search={handleSearch} />
-          <Filter
-            handleFilterChange={handleFilterChange}
-            handleSortChange={handleSortChange}
-          />
+    <BrowserRouter>
+    <Header />
+    <Routes>
+      <Route path='/' element={
+          <div className="App">
+        
+          <div className="App-header">
+            <div className="info">
+              <SearchBar search={handleSearch} />
+              <Filter
+                handleFilterChange={handleFilterChange}
+                handleSortChange={handleSortChange}
+              />
+            </div>
+            <Countries
+              searchQuery={searchQuery}
+              selectedRegion={selectedRegion}
+              selectedSubregion={selectedSubregion}
+              sortOption={sortOption}
+            />
+          </div>
         </div>
-        <Countries
-          searchQuery={searchQuery}
-          selectedRegion={selectedRegion}
-          selectedSubregion={selectedSubregion}
-          sortOption={sortOption}
-        />
-      </div>
-    </div>
+      }/>
+     <Route path='/country/:id' element={<CountryInfo/>}/>
+
+    </Routes>
+    </BrowserRouter>
+  
   );
 }
 

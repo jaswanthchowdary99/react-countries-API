@@ -17,7 +17,7 @@ body {
 }
 
 .countries-items {
-
+  cursor: pointer;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.336); 
   margin: 15px;
@@ -46,14 +46,20 @@ header {
  
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.212); 
 }
+.headContent{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .App-header{
   border: none;
 }
 .header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 25px;
+  margin-left: 50px;
+}
+.darkmode{
+  margin-right: 85px;
 }
 .searchBar {
   display: flex;
@@ -159,4 +165,67 @@ header {
 .dark-mode .toggle-button{
   background-color: var(--background-color); 
   color: var(--text-color); 
+}
+.link{
+  text-decoration: none;
+  color: inherit;
+}
+.button {
+  position: absolute;
+  top: 150px;
+  left: 60px; 
+  width: 100px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.349);
+  padding: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+.country-info-container {
+  display: flex;
+  align-items: flex-start; 
+  padding: 20px;
+  margin-left: 35px;
+  margin-top: 150px;
+  font-size: 15px;
+}
+.country-info-container p{
+  margin: 10px;  
+}
+.country-info-left {
+  margin-right: 25px;
+}
+.country-info-right{
+  margin-left: 120px;
+}
+.country-info-left img{
+  height: 300px;
+  width:500px;
+}
+.secondColumn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.countryBorders {
+  margin-top: 40px;
+  margin-left: 10px;
+}
+.country-info-right h1{
+  margin-left: 5px;
+}
+.button1 {
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.349);
+  padding: 10px;
+  text-decoration: none;
+  color: inherit;
+  width: 100px;
+  height: 30px;
+  margin-top: 5px;
+  margin-left: 15px;
 }

@@ -1,5 +1,23 @@
-
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+const url = 'https://restcountries.com/v3.1/all';
+
+export async function fetchCountries() {
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } else {
+      throw new Error("Unable to fetch data");
+    }
+  } catch (error) {
+    console.error("Error fetching countries:", error);
+    throw error;
+  }
+}
 
 export default function Countries({ searchQuery, selectedRegion, selectedSubregion, sortOption }) {
   const [countries, setCountries] = useState([]);
@@ -7,29 +25,18 @@ export default function Countries({ searchQuery, selectedRegion, selectedSubregi
   const [loading, setLoading] = useState(true);
   const [searchResultsFound, setSearchResultsFound] = useState(true);
 
-  const url = 'https://restcountries.com/v3.1/all';
-
   useEffect(() => {
-    async function fetchCountries() {
+    async function fetchData() {
       try {
-        const response = await fetch(url);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-          setCountries(data);
-          setLoading(false);
-        } else {
-          throw new Error("Unable to fetch data");
-        }
+        const data = await fetchCountries();
+        setCountries(data);
+        setLoading(false);
       } catch (error) {
-        console.error("Error fetching countries:", error);
         setLoading(false);
       }
     }
-    fetchCountries();
+    fetchData();
   }, []);
-
-  
 
   useEffect(() => {
     let filtered = countries.filter(country => {
@@ -53,19 +60,16 @@ export default function Countries({ searchQuery, selectedRegion, selectedSubregi
     setSearchResultsFound(filtered.length > 0 || !searchQuery);
   }, [countries, searchQuery, selectedRegion, selectedSubregion, sortOption]);
 
-
-
   if (loading) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
   }
-
-
 
   return (
     <div className='container'>
       <div className='list'>
         {searchResultsFound ? (
           filteredCountries.map(country => (
+            <Link  className="link" key={country.name.common} to={`/country/${country.name.common}`}>
             <div key={country.name.common} className='countries-items'>
               <img src={country.flags?.png} alt={`Flag of ${country.name.common}`} />
               <h2>{country.name.common}</h2>
@@ -74,6 +78,7 @@ export default function Countries({ searchQuery, selectedRegion, selectedSubregi
               <p><strong>Subregion: </strong>{country.subregion}</p>
               <p><strong>Capital: </strong>{country.capital}</p>
             </div>
+            </Link>
           ))
         ) : (
           <div style={{ textAlign: 'center' }}>No countries found.</div>
