@@ -54,6 +54,7 @@ function Filter({ handleFilterChange, handleSortChange, isDarkMode }) {
         onChange={handleChange}
         style={{ marginRight: '25px', width: '150px', fontSize: '14px', color: isDarkMode ? 'white' : 'black' }}
         displayEmpty  
+        MenuProps={{ MenuListProps: { disablePadding: true } }}
       >
         <MenuItem value="" style={{ color: isDarkMode ? 'white' : 'black', backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'transparent' }}>Filter by Region</MenuItem>
         {continents.map((continent, index) => (
@@ -66,7 +67,8 @@ function Filter({ handleFilterChange, handleSortChange, isDarkMode }) {
         value={selectedSubregion}
         onChange={handleSubregionChange}
         style={{ marginRight: '25px', width: '180px', fontSize: '14px', color: isDarkMode ? 'white' : 'black' }}
-        displayEmpty  
+        displayEmpty 
+        MenuProps={{ MenuListProps: { disablePadding: true } }} 
       >
         <MenuItem value="" style={{ color: isDarkMode ? 'white' : 'black', backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'transparent' }}>Filter by Subregion</MenuItem>
         {subregions.map((subregion, index) => (
@@ -79,7 +81,8 @@ function Filter({ handleFilterChange, handleSortChange, isDarkMode }) {
         value={selectedSortOption}
         onChange={handleSort}
         style={{ width: '240px', fontSize: '14px', color: isDarkMode ? 'white' : 'black' }}
-        displayEmpty  
+        displayEmpty 
+        MenuProps={{ MenuListProps: { disablePadding: true } }} 
       >
         <MenuItem value="" style={{ color: isDarkMode ? 'white' : 'black', backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'transparent' }}>Sort</MenuItem>
         {sortOptions.map((option, index) => (
