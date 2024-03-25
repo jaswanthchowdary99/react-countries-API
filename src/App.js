@@ -48,7 +48,7 @@ function App() {
                 <div className="App">
                   <Grid container spacing={3} sx={{ margin: '40px 0 40px -40px' }}>
                     <Grid item xs={12} md={6}>
-                      <SearchBar search={handleSearch} isDarkMode={isDarkMode} /> {/* Pass isDarkMode to SearchBar */}
+                      <SearchBar search={handleSearch} isDarkMode={isDarkMode} /> 
                     </Grid>
                     <Grid item xs={12} md={6} >
                       <Filter
