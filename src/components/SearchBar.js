@@ -1,22 +1,36 @@
+import React from 'react';
+import { TextField, InputAdornment } from '@mui/material';
+import { Search } from '@mui/icons-material';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
-function SearchBar({ search }) {
+function SearchBar({ search, isDarkMode }) {
   const handleSearch = (e) => {
     search(e.target.value);
   };
 
   return (
     <div className='searchBar'>
-      <div className="searchContainer">
-        <FontAwesomeIcon className="icon" icon={faSearch} />
-        <input 
-          type='text'
-          placeholder='Search for a country'
-          onChange={handleSearch}
-        />
-      </div>
+      <TextField
+        placeholder='Search for a country'
+        onChange={handleSearch}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search style={{ color: isDarkMode ? 'white' : 'black' }} /> 
+            </InputAdornment>
+          ),
+          style: {
+            color: isDarkMode ? 'white' : 'black',
+          },
+        }}
+        InputLabelProps={{
+          style: {
+            color: isDarkMode ? 'white' : 'black', 
+          },
+        }}
+        style={{
+          backgroundColor: 'transparent', 
+        }}
+      />
     </div>
   );
 }

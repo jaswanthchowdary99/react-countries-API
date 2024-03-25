@@ -1,22 +1,19 @@
-import React from 'react'
+
+import React from 'react';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 import Toggle from './Toggle';
 
-function Header() {
+function Header({ toggleDarkMode, isDarkMode }) {
   return (
- 
-    <div className='head'>
-    <header>
-      <div className='headContent'>
-      <div className="header-content">
-        <h1>Where in the world?</h1>
-      </div>
-      <div className='darkmode'>
-        <Toggle />
-        </div>
-      </div>
-    </header>
-  </div>
-);
+    <AppBar position="static" style={{ backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'inherit' }}>
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, ml: 8 }} style={{ color: isDarkMode ? 'white' : 'black' }}>
+          <h3>Where in the world?</h3>
+        </Typography>
+        <Toggle toggleDarkMode={toggleDarkMode} />
+      </Toolbar>
+    </AppBar>
+  );
 }
 
-export default Header
+export default Header;

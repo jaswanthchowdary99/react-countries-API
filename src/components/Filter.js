@@ -1,10 +1,12 @@
-
 import React, { useState, useEffect } from 'react';
+import { Select, MenuItem } from '@mui/material';
+import { fetchCountries } from './Countries'; 
 
-function Filter({ handleFilterChange, handleSortChange }) {
+function Filter({ handleFilterChange, handleSortChange, isDarkMode }) {
   const [subregions, setSubregions] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState('');
   const [selectedSubregion, setSelectedSubregion] = useState('');
+  const [selectedSortOption, setSelectedSortOption] = useState('');
 
   const continents = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   const sortOptions = ['Ascending by Area', 'Descending by Area', 'Ascending by Population', 'Descending by Population'];
@@ -13,14 +15,10 @@ function Filter({ handleFilterChange, handleSortChange }) {
     async function fetchSubregions() {
       if (selectedRegion !== '') {
         try {
-          const response = await fetch(`https://restcountries.com/v3.1/region/${selectedRegion}`);
-          if (response.ok) {
-            const data = await response.json();
-            const uniqueSubregions = Array.from(new Set(data.map(country => country.subregion)));
-            setSubregions(uniqueSubregions);
-          } else {
-            throw new Error("Unable to fetch subregions");
-          }
+          const countries = await fetchCountries(); 
+          const filteredCountries = countries.filter(country => country.region === selectedRegion);
+          const uniqueSubregions = Array.from(new Set(filteredCountries.map(country => country.subregion)));
+          setSubregions(uniqueSubregions);
         } catch (error) {
           console.error("Error fetching subregions:", error);
         }
@@ -44,34 +42,52 @@ function Filter({ handleFilterChange, handleSortChange }) {
   };
 
   const handleSort = (e) => {
+    setSelectedSortOption(e.target.value);
     handleSortChange(e.target.value);
   };
 
   return (
-    <div className="filter">
-      <select id="continent-filter" onChange={handleChange} value={selectedRegion} style={{marginRight: '25px'}}>
-        <option value="">Filter by Region</option>
+    <div className="filter" style={{ display: 'flex' }}>
+      <Select
+        id="continent-filter"
+        value={selectedRegion}
+        onChange={handleChange}
+        style={{ marginRight: '25px', width: '150px', fontSize: '14px', color: isDarkMode ? 'white' : 'black' }}
+        displayEmpty  
+      >
+        <MenuItem value="" style={{ color: isDarkMode ? 'white' : 'black', backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'transparent' }}>Filter by Region</MenuItem>
         {continents.map((continent, index) => (
-          <option key={index} value={continent}>{continent}</option>
+          <MenuItem key={index} value={continent} style={{ color: isDarkMode ? 'white' : 'black', backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'transparent' }}>{continent}</MenuItem>
         ))}
-      </select>
-      {subregions.length > 0 && (
-        <select id="subregion-filter" onChange={handleSubregionChange} value={selectedSubregion}style={{marginRight: '25px'}}>
-          <option value="">Filter by Subregion</option>
-          {subregions.map((subregion, index) => (
-            <option key={index} value={subregion}>{subregion}</option>
-          ))}
-        </select>
-      )}
-      <select id="sort-filter" onChange={handleSort} defaultValue="">
-        <option value="">Sort</option>
+      </Select>
+
+      <Select
+        id="subregion-filter"
+        value={selectedSubregion}
+        onChange={handleSubregionChange}
+        style={{ marginRight: '25px', width: '180px', fontSize: '14px', color: isDarkMode ? 'white' : 'black' }}
+        displayEmpty  
+      >
+        <MenuItem value="" style={{ color: isDarkMode ? 'white' : 'black', backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'transparent' }}>Filter by Subregion</MenuItem>
+        {subregions.map((subregion, index) => (
+          <MenuItem key={index} value={subregion} style={{ color: isDarkMode ? 'white' : 'black', backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'transparent' }}>{subregion}</MenuItem>
+        ))}
+      </Select>
+
+      <Select
+        id="sort-filter"
+        value={selectedSortOption}
+        onChange={handleSort}
+        style={{ width: '240px', fontSize: '14px', color: isDarkMode ? 'white' : 'black' }}
+        displayEmpty  
+      >
+        <MenuItem value="" style={{ color: isDarkMode ? 'white' : 'black', backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'transparent' }}>Sort</MenuItem>
         {sortOptions.map((option, index) => (
-          <option key={index} value={option}>{option}</option>
+          <MenuItem key={index} value={option} style={{ color: isDarkMode ? 'white' : 'black', backgroundColor: isDarkMode ? 'rgb(32,44,54)' : 'transparent' }}>{option}</MenuItem>
         ))}
-      </select>
+      </Select>
     </div>
   );
 }
 
 export default Filter;
-

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchCountries } from "./Countries";
 import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 
 
 function CountryInfo() {

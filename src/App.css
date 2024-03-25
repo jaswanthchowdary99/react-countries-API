@@ -1,4 +1,4 @@
-
+/* 
 body {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -21,7 +21,8 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.336); 
   margin: 15px;
-  width: 250px;
+  width: 220px;
+  height: 290px;
   padding-bottom: 20px;
 }
 
@@ -60,29 +61,29 @@ header {
 }
 .darkmode{
   margin-right: 85px;
-}
-.searchBar {
+} */
+/* .searchBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   
-}
-.info{
+} */
+/* .info{
   display: flex;
   justify-content: space-between;
   margin: 50px;
-}
+} */
 
-.searchContainer {
+/* .searchContainer {
   border: none;
   border-radius: 1px;
   display: flex;
   align-items: center;
   padding: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.349); 
-}
+} */
 
-.searchContainer input {
+/* .searchContainer input {
   border: none;
   background-color: transparent;
   height: 25px;
@@ -92,24 +93,24 @@ header {
 }
 .searchContainer input::placeholder {
   color: var(--text-color); 
-}
+} */
 
 
-.icon {
+/* .icon {
   margin-right: 10px; 
-}
-.filter{
+} */
+/* .filter{
   display: flex;
  justify-content: space-between;
-}
-.filter select {
+} */
+/* .filter select {
   border: none; 
   background-color: transparent;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.349); 
   padding: 10px; 
-}
+} */
 
-.filter select:focus {
+/* .filter select:focus {
   outline: none; 
 }
 .toggle-button{
@@ -123,21 +124,21 @@ header {
 .dark-mode {
   --background-color:rgb(32,44,54);
   --text-color: rgb(221,226,232); 
-}
+} */
 
 /* Header styles  for Dark mode*/
-.head {
+/* .head {
   background-color: var(--background-color); 
 }
 
 .header {
   padding: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.212);
-}
+} */
 
 
 /* Filter styles for Dark mode */
-.filter select {
+/* .filter select {
   background-color: var(--background-color); 
   color: var(--text-color); 
 }
@@ -160,16 +161,17 @@ header {
 .dark-mode .filter select {
   background-color: var(--background-color); 
   color: var(--text-color); 
-}
+} */
 /* button styles for Dark mode */
-.dark-mode .toggle-button{
+/* .dark-mode .toggle-button{
   background-color: var(--background-color); 
   color: var(--text-color); 
-}
-.link{
+}*/
+/* .link{
   text-decoration: none;
   color: inherit;
-}
+} */
+
 .button {
   position: absolute;
   top: 150px;
@@ -182,7 +184,7 @@ header {
   padding: 10px;
   text-decoration: none;
   color: inherit;
-}
+} 
 .country-info-container {
   display: flex;
   align-items: flex-start; 
