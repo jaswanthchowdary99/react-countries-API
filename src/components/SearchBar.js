@@ -22,14 +22,6 @@ function SearchBar({ search, isDarkMode }) {
             color: isDarkMode ? 'white' : 'black',
           },
         }}
-        InputLabelProps={{
-          style: {
-            color: isDarkMode ? 'white' : 'black', 
-          },
-        }}
-        style={{
-          backgroundColor: 'transparent', 
-        }}
       />
     </div>
   );
